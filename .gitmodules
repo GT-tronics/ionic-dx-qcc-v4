@@ -1,0 +1,4 @@
+[submodule "src/app/providers"]
+	path = src/app/providers
+	url = https://github.com/GT-tronics/ionic-dx-providers.git
+	branch = v4
