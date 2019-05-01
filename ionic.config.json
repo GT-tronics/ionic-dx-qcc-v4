@@ -1,0 +1,7 @@
+{
+  "name": "ionic-dx-qcc-v4",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
