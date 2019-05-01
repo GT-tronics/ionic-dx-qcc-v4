@@ -1,15 +1,15 @@
-# Install HomeSpot App Source Package
-## Clone homespot-ionic-v4 respository
+# Install ionic-dx-qcc-v4 App Source Package
+## Clone ionic-dx-qcc-v4-ionic-v4 respository
 ```
 cd ~/projects/ionic/v4/
-git clone https://github.com/GT-tronics/homespot-ionic-v4.git homespot
-cd ~/projects/ionic/v4/homespot/
+git clone https://github.com/GT-tronics/ionic-dx-qcc-v4.git
+cd ~/projects/ionic/v4/ionic-dx-qcc-v4/
 git submodule init
 git submodule update --remote
 ```
 ## Install iOS and android platforms
 ```
-cd ~/projects/ionic/v4/homespot/
+cd ~/projects/ionic/v4/ionic-dx-qcc-v4/
 ionic cordova platform add ios
 ionic cordova platform add android
 ```
@@ -17,15 +17,15 @@ ionic cordova platform add android
 ### CDVPLuginResult
 This patch allows the the nested NSDictionary object which contains NSData be able to convert JSON string probably. 
 ```
-cd ~/projects/ionic/v4/homespot/
+cd ~/projects/ionic/v4/ionic-dx-qcc-v4/
 cp ./patches/ios/CDVPluginResult/* ./platforms/ios/CordovaLib/Classes/Public
 ```
 ### Android Support V4
-The DataExchanger cordova plugin requires this library
+The DataExchanger cordova plugin requires this library. Use VSCode or your editor of choice to edit ~/projects/ionic/v4/ionic-dx-qcc-v4/platforms/android/app/build.gradle.
 ```
-code ~/projects/ionic/v4/homespot/platforms/android/app/build.gradle
+code ~/projects/ionic/v4/ionic-dx-qcc-v4/platforms/android/app/build.gradle
 ```
-Use VS Code or any other text editor to add the line **implementation 'com.android.support:support-v4:+'** in the dependency section
+Add the line **implementation 'com.android.support:support-v4:+'** in the dependency section
 ```
 ...
 dependencies {
@@ -40,9 +40,9 @@ dependencies {
 ## Install DataExchanger cordova plugin
 ```
 cd ~/projects/cordova/plugins/
-git clone https://github.com/GT-tronics/cordova-plugin-dataexchanger-fork.git
-cd ~/projects/ionic/v4/homespot
-ionic cordova plugin add ../../../cordova/plugins/cordova-plugin-dataexchanger-fork
+git clone https://github.com/GT-tronics/cordova-plugin-dataexchanger.git
+cd ~/projects/ionic/v4/ionic-dx-qcc-v4
+ionic cordova plugin add ../../../cordova/plugins/cordova-plugin-dataexchanger
 ```
 ## Build And Run The Apps
 ### iOS
@@ -53,32 +53,32 @@ npm install -g ios-deploy
 ```
 Now build and run the ionic ios package.
 ```
-open ~/projects/ionic/v4/homespot/platforms/ios/homespot.xcworkspace
+open ~/projects/ionic/v4/ionic-dx-qcc-v4/platforms/ios/ionic-dx-qcc-v4.xcworkspace
 [Update the code signing team to GT-tronics HK Ltd and quit xcode]
-cd ~/projects/ionic/v4/homespot
+cd ~/projects/ionic/v4/ionic-dx-qcc-v4
 ionic cordova run ios
 ```
 ### Android
 ```
-cd ~/projects/ionic/v4/homespot
+cd ~/projects/ionic/v4/ionic-dx-qcc-v4
 ionic cordova run android
 ```
 ## Ionic Info
 ```
-Ionic:
+onic:
 
-   ionic (Ionic CLI)             : 4.10.3 (/Users/ming/.nvm/versions/node/v11.10.0/lib/node_modules/ionic)
-   Ionic Framework               : @ionic/angular 4.0.2
-   @angular-devkit/build-angular : 0.12.4
-   @angular-devkit/schematics    : 7.2.4
-   @angular/cli                  : 7.2.4
-   @ionic/angular-toolkit        : 1.4.0
+   ionic (Ionic CLI)             : 4.12.0 (/Users/ming/.nvm/versions/node/v11.10.0/lib/node_modules/ionic)
+   Ionic Framework               : @ionic/angular 4.3.1
+   @angular-devkit/build-angular : 0.13.8
+   @angular-devkit/schematics    : 7.3.8
+   @angular/cli                  : 7.3.8
+   @ionic/angular-toolkit        : 1.5.1
 
 Cordova:
 
    cordova (Cordova CLI) : 8.1.2 (cordova-lib@8.1.1)
-   Cordova Platforms     : android 7.1.4, ios 4.5.5
-   Cordova Plugins       : cordova-plugin-ionic-keyboard 2.1.3, cordova-plugin-ionic-webview 3.1.2, (and 6 other plugins)
+   Cordova Platforms     : none
+   Cordova Plugins       : no whitelisted plugins (1 plugins total)
 
 System:
 
@@ -89,6 +89,7 @@ System:
    npm               : 6.7.0
    OS                : macOS High Sierra
    Xcode             : Xcode 10.1 Build version 10B61
+
 ```
 
 
