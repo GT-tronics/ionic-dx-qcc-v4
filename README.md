@@ -1,5 +1,8 @@
 # HomeSpot App Release Notes
 
+## R 0.8.3a
+* updated BUILD.md
+
 ## R 0.8.3
 * changed app name from ionic-dx-qcc-v4 to dx-qcc-audio-demo
 

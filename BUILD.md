@@ -1,15 +1,15 @@
-# Install ionic-dx-qcc-v4-demo App Source Package
-## Clone ionic-dx-qcc-v4-ionic-v4 respository
+# Install dx-qcc-audio-demo App Source Package
+## Clone the ionic-dx-qcc-v4 respository
 ```
 cd ~/projects/ionic/v4/
-git clone https://github.com/GT-tronics/ionic-dx-qcc-v4.git
-cd ~/projects/ionic/v4/ionic-dx-qcc-v4/
+git clone https://github.com/GT-tronics/ionic-dx-qcc-v4.git qccdemo
+cd ~/projects/ionic/v4/qccdemo/
 git submodule init
 git submodule update --remote
 ```
 ## Install iOS and android platforms
 ```
-cd ~/projects/ionic/v4/ionic-dx-qcc-v4/
+cd ~/projects/ionic/v4/qccdemo/
 ionic cordova platform add ios
 ionic cordova platform add android
 ```
@@ -17,13 +17,13 @@ ionic cordova platform add android
 ### CDVPLuginResult
 This patch allows the the nested NSDictionary object which contains NSData be able to convert JSON string probably. 
 ```
-cd ~/projects/ionic/v4/ionic-dx-qcc-v4/
+cd ~/projects/ionic/v4/qccdemo/
 cp ./patches/ios/CDVPluginResult/* ./platforms/ios/CordovaLib/Classes/Public
 ```
 ### Android Support V4
-The DataExchanger cordova plugin requires this library. Use VSCode or your editor of choice to edit ~/projects/ionic/v4/ionic-dx-qcc-v4/platforms/android/app/build.gradle.
+The DataExchanger cordova plugin requires this library. Use VSCode or your editor of choice to edit ~/projects/ionic/v4/qccdemo/platforms/android/app/build.gradle.
 ```
-code ~/projects/ionic/v4/ionic-dx-qcc-v4/platforms/android/app/build.gradle
+code ~/projects/ionic/v4/qccdemo/platforms/android/app/build.gradle
 ```
 Add the line **implementation 'com.android.support:support-v4:+'** in the dependency section
 ```
@@ -41,7 +41,7 @@ dependencies {
 ```
 cd ~/projects/cordova/plugins/
 git clone https://github.com/GT-tronics/cordova-plugin-dataexchanger.git
-cd ~/projects/ionic/v4/ionic-dx-qcc-v4
+cd ~/projects/ionic/v4/qccdemo
 ionic cordova plugin add ../../../cordova/plugins/cordova-plugin-dataexchanger
 ```
 ## Build And Run The Apps
@@ -53,14 +53,14 @@ npm install -g ios-deploy
 ```
 Now build and run the ionic ios package.
 ```
-open ~/projects/ionic/v4/ionic-dx-qcc-v4/platforms/ios/ionic-dx-qcc-v4-demo.xcworkspace
+open ~/projects/ionic/v4/qccdemo/platforms/ios/dx-qcc-audio-demo.xcworkspace
 [Update the code signing team to GT-tronics HK Ltd and quit xcode]
-cd ~/projects/ionic/v4/ionic-dx-qcc-v4
+cd ~/projects/ionic/v4/qccdemo
 ionic cordova run ios
 ```
 ### Android
 ```
-cd ~/projects/ionic/v4/ionic-dx-qcc-v4
+cd ~/projects/ionic/v4/qccdemo
 ionic cordova run android
 ```
 ## Ionic Info
