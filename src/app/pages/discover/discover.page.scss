@@ -1,0 +1,22 @@
+.center {
+    text-align: center;
+}
+
+.large-font {
+    font-weight: bold;
+    font-size: 2em;
+}
+.small-font {
+    font-size: 0.7em;
+}
+.hslogo-img {
+    height: 40px;
+}
+.item ion-thumbnail {
+    min-width: 5rem;    
+    min-height: 5rem;
+    img {
+        max-width: 5rem;    
+        min-width: 5rem;
+    }
+}

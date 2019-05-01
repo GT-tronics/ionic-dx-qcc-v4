@@ -2,8 +2,23 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home', loadChildren: './home/home.module#HomePageModule' },
+  {
+    path: '',
+    redirectTo: '/discover',
+    pathMatch: 'full'
+  },
+  {
+    path: 'discover',
+    loadChildren: './pages/discover/discover.module#DiscoverPageModule'
+  },
+  {
+    path: 'device-snk',
+    loadChildren: './pages/device-snk/device-snk.module#DeviceSnkPageModule'
+  },
+  {
+    path: 'settings-snk',
+    loadChildren: './pages/settings-snk/settings-snk.module#SettingsSnkPageModule'
+  },
 ];
 
 @NgModule({

@@ -1,0 +1,84 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title class="center">Discover</ion-title>
+  </ion-toolbar>
+</ion-header>
+  
+<ion-content>
+  <ion-label>
+    <p class="center">{{pullToScanMsg}}</p>
+  </ion-label>
+  <ion-refresher (ionRefresh)="scanRefresh($event)" (ionPull)="scanPull($event)">
+    <ion-refresher-content pullingText="" refreshingText="">
+    </ion-refresher-content>
+  </ion-refresher>
+  <ion-list>
+    <ion-list-header color="light">
+        <p>Linked Devices</p>
+    </ion-list-header>
+    <ion-item-sliding *ngFor="let devInfo of linkedDevInfos; trackBy: trackByUUID" #item>
+      <ion-item (click)="connectDevice(item, devInfo)">
+        <div slot="start">
+          <ion-thumbnail>
+            <!-- <ion-icon name="pin" size="large" item-start color="primary"></ion-icon> -->
+            <ion-img src="assets/icon/LR-Transmitter.png"></ion-img>
+          </ion-thumbnail>
+        </div>
+        <div>
+          <h2>{{devInfo.name}}<br></h2>
+          <p class="small-font">{{devInfo.uuid}}</p>
+        </div>
+        <div slot="end">
+          <ion-icon name="bluetooth" size="large" color="primary" *ngIf="devInfo.isConnected()"></ion-icon>
+        </div>
+      </ion-item>
+      <ion-item-options>
+        <ion-item-option color="danger" (click)="removeDevice(item, devInfo)">
+          <ion-icon name="trash" size="large"></ion-icon>
+          Remove
+        </ion-item-option>
+        <ion-item-option *ngIf="!devInfo.isConnected()" color="primary" (click)="connectDevice(item, devInfo)">
+          <ion-icon name="bluetooth" size="large"></ion-icon>
+          Connect
+        </ion-item-option>
+        <ion-item-option *ngIf="devInfo.isConnected()" color="primary" (click)="disconnectDevice(item, devInfo)">
+          <ion-icon name="bluetooth" size="large"></ion-icon>
+          Disconnect
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+  <ion-list>
+    <ion-list-header color="light">
+        <p>Unlinked Devices</p>
+    </ion-list-header>
+    <ion-item-sliding *ngFor="let devInfo of unlinkDevInfos; trackBy: trackByUUID" #item>
+      <ion-item (click)="connectDevice(item, devInfo)">
+        <div slot="start">
+          <ion-thumbnail>
+            <!-- <ion-icon name="pin" size="large" item-start color="primary"></ion-icon> -->
+            <ion-img src="assets/icon/LR-Transmitter.png"></ion-img>
+          </ion-thumbnail>
+        </div>
+        <div>
+          <h2>{{devInfo.name}}<br></h2>
+          <p class="small-font">{{devInfo.uuid}}</p>
+        </div>
+        <div slot="end">
+          <ion-icon name="bluetooth" size="large" *ngIf="devInfo.isConnected()"></ion-icon>
+        </div>
+      </ion-item>
+    </ion-item-sliding>
+  </ion-list>
+
+</ion-content>
+
+<ion-footer>
+    <ion-toolbar>
+        <!-- <h4 class="center">HomeSpot Connect<br></h4>
+        <h4 class="center-small">Copyright 2019</h4> -->
+        <ion-img class="hslogo-img" src="assets/icon/homespot Logo.jpg"></ion-img>
+      </ion-toolbar>
+</ion-footer>
+
+  

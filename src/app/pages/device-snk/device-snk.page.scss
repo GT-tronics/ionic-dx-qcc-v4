@@ -1,0 +1,53 @@
+// .item {
+//     min-height: 7rem; /* <- this can be whatever you need */
+// }
+.center {
+    text-align: center;
+}
+.center-small {
+    text-align: center;
+    font-size: 0.6em;
+}
+.dev-name-label {
+    font-size: 1.2em;
+}
+.dev-addr-label {
+    font-size: 0.7em;
+}
+.hslogo-img {
+    height: 40px;
+}
+.item-control-div {
+    width: 100vw;
+    margin: auto;
+    // border: 3px solid #73AD21;
+}
+.codec-div
+{
+    position: absolute;
+    justify-content: center;
+    display: flex;
+    width: 100%;
+    top: 182px;
+    padding: 0px;
+}
+.codec-aac-logo-img {
+    height: 24px;
+    float: bottom;
+}
+.codec-aptx-logo-img {
+    height: 24px;
+    float: bottom;
+}
+.device-image-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    height: 210px;
+    weight: 210px;
+    // border: 20px solid #73AD21;
+}
+.img {    
+    height: 70%;
+}
