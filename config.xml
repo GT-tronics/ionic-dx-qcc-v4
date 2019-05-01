@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.gtttronics.app.ionic.v4.dx.qccaudiodemo" version="0.8.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>ionic-dx-qcc-v4-demo</name>
+    <name>dx-qcc-audio-demo</name>
     <description>An Ionic V4 Demo App for DataExchanger And QCCAUDIO.</description>
     <author email="info@gt-tronics.com" href="http://gt-tronics.com/">GT-tronics</author>
     <content src="index.html" />
