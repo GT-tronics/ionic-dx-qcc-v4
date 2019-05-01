@@ -1,4 +1,4 @@
-# Install ionic-dx-qcc-v4 App Source Package
+# Install ionic-dx-qcc-v4-demo App Source Package
 ## Clone ionic-dx-qcc-v4-ionic-v4 respository
 ```
 cd ~/projects/ionic/v4/
@@ -53,7 +53,7 @@ npm install -g ios-deploy
 ```
 Now build and run the ionic ios package.
 ```
-open ~/projects/ionic/v4/ionic-dx-qcc-v4/platforms/ios/ionic-dx-qcc-v4.xcworkspace
+open ~/projects/ionic/v4/ionic-dx-qcc-v4/platforms/ios/ionic-dx-qcc-v4-demo.xcworkspace
 [Update the code signing team to GT-tronics HK Ltd and quit xcode]
 cd ~/projects/ionic/v4/ionic-dx-qcc-v4
 ionic cordova run ios

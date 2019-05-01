@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
-import { MbscModule } from '@mobiscroll/angular';
 
 import { SettingsSnkPage } from './settings-snk.page';
 
@@ -13,7 +12,6 @@ import { SettingsSnkPage } from './settings-snk.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    MbscModule,
     RouterModule.forChild([
       { path: '', component: SettingsSnkPage }
     ])

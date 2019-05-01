@@ -1,10 +1,9 @@
 import { Component, NgZone, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Platform, Events, NavController, AlertController } from '@ionic/angular';
+import { Platform, Events, NavController, AlertController, ToastController } from '@ionic/angular';
 import { AtCmdDispatcherService, BtDeviceInfo } from '../../providers/atcmd-dispatcher/atcmd-dispatcher.service';
 import { ATCMDHDLQCCSNK } from '../../providers/atcmd-dispatcher/atcmd-handler-qcc-sink';
 import { PageParamsPassingService } from 'src/app/providers/page-params-passing/page-params-passing.service';
-import { mobiscroll, MbscPopupOptions, MbscListviewOptions } from '@mobiscroll/angular';
 
 @Component({
   selector: 'page-device',
@@ -40,62 +39,6 @@ export class DeviceSnkPage implements OnInit, OnDestroy
   private rssiTimer : any = null;
   private refresher : any = null;
 
-  protected actionItems = 
-  [
-    // {
-    //   selected: false,
-    //   icon: 'line-music',
-    //   text: 'AAC'
-    // }, 
-    {
-      selected: false,
-      icon: 'ion-bluetooth',
-      text: 'Turn on pairing',
-    }, 
-    // {
-    //   selected: false,
-    //   icon: 'line-settings',
-    //   text: 'Settings'
-    // },
-    // {
-    //   selected: false,
-    //   icon: 'line-params',
-    //   text: 'EQ'
-    // }
-  ];
-
-  private actionSettings: MbscPopupOptions = {
-    display: 'bubble',
-    //anchor: '#showVertical .mbsc-btn',
-    anchor: '#showVertical',
-    buttons: [],
-    cssClass: 'mbsc-no-padding md-vertical-list'
-  };
-
-  private lvSettings: MbscListviewOptions = {
-    enhance: true,
-    swipe: false,
-    onItemTap: function (event, inst) {
-      if( event.target.innerText == "Turn on pairing" )
-      {
-        this.atCmdHandler.setPairingOnOff(true).then( ret => {
-          // console.log("[DEVICE-SNK] change pairing success " + JSON.stringify(ret));
-        }).catch( ret => {
-          console.log("[DEVICE-SNK] change pairing fail " + JSON.stringify(ret));
-        });;
-        // this.actionItems[0].text = "Turn off pairing";
-      }
-      else // if( event.target.innerText == "Turn off pairing" )
-      {
-        this.atCmdHandler.setPairingOnOff(false).then( ret => {
-          // console.log("[DEVICE-SNK] change pairing success " + JSON.stringify(ret));
-        }).catch( ret => {
-          console.log("[DEVICE-SNK] change pairing fail " + JSON.stringify(ret));
-        });;
-        // this.actionItems[0].text = "Turn on pairing";
-      }
-    }.bind(this),
-  };
 
   constructor(
     public platform: Platform,
@@ -103,6 +46,7 @@ export class DeviceSnkPage implements OnInit, OnDestroy
     public route: ActivatedRoute,
     private zone: NgZone,
     public alertCtrl : AlertController,
+    public toastCtrl : ToastController,
     public dispatcher : AtCmdDispatcherService,
     public events: Events,
     private ppp : PageParamsPassingService
@@ -193,9 +137,13 @@ export class DeviceSnkPage implements OnInit, OnDestroy
 
           if( !ret.isComplete )
           {
-            mobiscroll.toast({
-              message: 'Warning: PDL incomplete'
-            });
+            this.toastCtrl.create({
+              message: 'Warning: PDL incomplete',
+              duration: 2000
+            }).then((toastData)=>{
+              console.log(toastData);
+              toastData.present();
+            });            
           }
 
           // Use AT+CC? to find out the current streaming codec.
@@ -251,18 +199,24 @@ export class DeviceSnkPage implements OnInit, OnDestroy
         if( this.deviceState == 'DISCOVERABLE' )
         {
           this.pairingButtonColor = "danger";
-          this.actionItems[0].text = "Turn off pairing";
-          mobiscroll.toast({
-            message: 'Bluetooth pairing started'
-          });
-        }
+          this.toastCtrl.create({
+            message: 'Bluetooth pairing started',
+            duration: 2000
+          }).then((toastData)=>{
+            console.log(toastData);
+            toastData.present();
+          });            
+      }
         else if( this.pairingButtonColor == "danger" )
         {
           this.pairingButtonColor = "dark";
-          this.actionItems[0].text = "Turn on pairing";
-          mobiscroll.toast({
-            message: 'Bluetooth pairing ended'
-          });
+          this.toastCtrl.create({
+            message: 'Bluetooth pairing ended',
+            duration: 2000
+          }).then((toastData)=>{
+            console.log(toastData);
+            toastData.present();
+          });            
         }
 
       // setTimeout(() => {
@@ -448,10 +402,14 @@ export class DeviceSnkPage implements OnInit, OnDestroy
 
       if( !ret.isComplete )
       {
-        mobiscroll.toast({
-          message: 'Warning: PDL incomplete'
-        });
-      }
+        this.toastCtrl.create({
+          message: 'Warning PDL incomplete',
+          duration: 2000
+        }).then((toastData)=>{
+          console.log(toastData);
+          toastData.present();
+        });            
+    }
     }).catch( ret => {
       console.log("[DEVICE-SNK] refresh PDL fail " + JSON.stringify(ret));
       this.zone.run(() => {

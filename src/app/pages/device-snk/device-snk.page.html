@@ -18,34 +18,8 @@
         <ion-refresher-content pullingText="" refreshingText="">
         </ion-refresher-content>
     </ion-refresher>            
-    <!-- <div class="md-hamb mbsc-padding">
-        <mbsc-tab-nav display="inline">
-            <mbsc-nav-item *ngFor="let item of actionItems" [(selected)]="item.selected" [disabled]="item.disabled" [icon]="item.icon">{{item.text}}</mbsc-nav-item>
-        </mbsc-tab-nav>
-    </div> -->
-    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-        <ion-fab-button id="showVertical" (click)="vertical.instance.show()" >
-            <ion-icon name="more"></ion-icon>
-        </ion-fab-button>
-    </ion-fab>
-    <!-- Device Image -->
-    <div class="device-image-div">
-        <img class="img" src="assets/icon/receiver-logo.png"/>
-    </div>
-    <div class="codec-div" *ngIf="isStreaming && streamCodecStr == 'AAC'">
-        <ion-img  class="codec-aac-logo-img" src="assets/icon/aac-logo.svg"></ion-img>
-    </div>
-    <div class="codec-div" *ngIf="isStreaming && streamCodecStr == 'APTX'">
-        <ion-img class="codec-aptx-logo-img" src="assets/icon/aptx-logo.svg"></ion-img>
-    </div>
-    <div class="codec-div" *ngIf="isStreaming && streamCodecStr == 'APTX-LL'">
-        <ion-img class="codec-aptx-logo-img" src="assets/icon/aptxll-logo.svg"></ion-img>    
-    </div>
-    <div class="codec-div" *ngIf="isStreaming && streamCodecStr == 'APTX-HD'">
-        <ion-img class="codec-aptx-logo-img" src="assets/icon/aptxhd-logo.svg"></ion-img>    
-    </div>
     <!-- Buttons and Codec Display  -->
-    <!-- <div>
+    <div>
         <ion-grid>
             <ion-row>
                 <ion-col col-6>
@@ -58,7 +32,7 @@
                 </ion-col>
             </ion-row>
         </ion-grid>    
-    </div> -->
+    </div>
     <!-- Pair Host Device List -->
     <div>
         <!-- <ion-label>
@@ -113,20 +87,5 @@
 
 </ion-content>
   
-<ion-footer>
-    <ion-toolbar>
-        <!-- <h4 class="center">HomeSpot Connect<br></h4>
-        <h4 class="center-small">Copyright 2019</h4> -->
-        <ion-img class="hslogo-img" src="assets/icon/homespot Logo.jpg"></ion-img>
-    </ion-toolbar>
-</ion-footer>
-
-<mbsc-popup [options]="actionSettings" #vertical="mobiscroll">
-    <mbsc-listview [options]="lvSettings">
-        <mbsc-listview-item *ngFor="let item of actionItems" [icon]="item.icon" (click)="vertical.instance.hide()">
-            {{ item.text }}
-        </mbsc-listview-item>
-    </mbsc-listview>
-</mbsc-popup>
 
         

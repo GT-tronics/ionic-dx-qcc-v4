@@ -4,7 +4,6 @@ import { Platform, Events, NavController, AlertController } from '@ionic/angular
 import { ATCMDHDLQCCSNK } from 'src/app/providers/atcmd-dispatcher/atcmd-handler-qcc-sink';
 import { PageParamsPassingService } from 'src/app/providers/page-params-passing/page-params-passing.service';
 import { BtDeviceInfo } from 'src/app/providers/atcmd-dispatcher/atcmd-dispatcher.service';
-import { mobiscroll, MbscNumpadModule, MbscFormOptions } from '@mobiscroll/angular';
 
 /**
  * Generated class for the SettingsPage page.
@@ -38,29 +37,7 @@ export class SettingsSnkPage implements OnInit, OnDestroy
 
   public origBtName : string;
   public customBtName : string;
-  public pinCode : number;
-  public pinCodeMsg : string = "Not setup";
-  public pinCodePadSettings: any = {
-    theme: 'ios',
-    buttons: ['set', 'clear', 'cancel'],
-    template: 'dddd',
-    allowLeadingZero: true,
-    placeholder: '-',
-    mask: '*',
-    headerText: 'Enter PIN',
-    validate: function (event, inst) {
-        return {
-            invalid: event.values.length != 4
-        };
-    },
-    onClear: (event, inst) => {
-      this.pinCodeOnClear(event, inst);
-    },
-    onSet: (event, inst) => {
-      this.pinCodeOnSet(event, inst);
-    },
-  };
-
+  
   public codecAptX : boolean = false;
   public codecAptXLL : boolean = false;
   public codecAptXHD : boolean = false;

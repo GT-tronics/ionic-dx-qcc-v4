@@ -20,17 +20,6 @@
         </ion-list-header>
         <ion-item>
             <ion-input type="text" clear-input maxlength="20" placeholder="{{origBtName}} (Default)" [(ngModel)]="customBtName" (ionBlur)="updateBluetoothName()" (keyup.enter)="updateBluetoothName()">Name:  </ion-input>
-            <!-- <mbsc-input label-style="inline" input-style="box" [(ngModel)]="customBtName" placeholder="{{origBtName}} (Default)" (change)="updateBluetoothName()">Name:</mbsc-input> -->
-        </ion-item>
-        <ion-list-header color="light">
-            <p>Pin Code</p>
-        </ion-list-header>
-        <ion-item>
-            <!-- <ion-input type="numeric" clear-on-edit inputmode="numeric" pattern="[0-9]*" maxlength=4 minlength=1 placeholder="Not Set (Factory Default)" [(ngModel)]="pinCode" (ionBlur)="updatePinCode()" (keyup.enter)="updatePinCode()"></ion-input> -->
-            <!-- <ion-label>{{pinCodeMsg}}</ion-label> -->
-            <!-- <ion-button slot="end" (click)="setPinCode()">Set</ion-button> -->
-            <ion-label>Code: </ion-label>
-            <input [(ngModel)]="pinCode" mbsc-numpad [mbsc-options]="pinCodePadSettings" placeholder="{{pinCodeMsg}}" />
         </ion-item>
         <ion-list-header color="light">
             <p>A2DP Codec</p>
