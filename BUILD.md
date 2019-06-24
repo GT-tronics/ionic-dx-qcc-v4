@@ -45,7 +45,48 @@ cd ~/projects/ionic/v4/qccdemo
 ionic cordova plugin add ../../../cordova/plugins/cordova-plugin-dataexchanger
 ```
 If you receive a zip folder of cordova-plugin-dataexchanger, you can unzip the folder to ~/projects/cordova/plugins/ instead of git clone in the above instruction.
- 
+
+## Insert your BLE Service UUID String
+Create your own service UUID and insert below the comment line in ~/projects/ionic/v4/qccdemo/src/app/providers/data-exchanger/data-exchanger.service.ts 
+```
+init(sysEvtCb : (obj) => void, useSpp : boolean) : Promise<any> {
+   return new Promise((resolve,reject)=>{
+      this.platform.ready().then(() => {
+            // TODO: to remove after upgrading to Dx plugin that takes care of this
+            this.rxCmdBuffer = '';
+            if(this.inited) {
+               this.isConnected && this.disconnect(this.deviceUUID);
+               this.isConnected = false;
+               this.stopScan();
+               resolve({"state":"init"});
+               return;
+            }
+            this.isConnected = false;
+            this.isScanning = false;
+            this.isBtDisabled = true;
+            this.inited = true;
+            this.deviceUUID = null;
+            this.rxDataBuffer = '';
+            this.rxCmdBuffer = '';
+   
+            if (cordova.plugin.dx === undefined) {
+               reject({"retCode":-1,"status":"plugin not loaded"});
+            } else {
+               cordova.plugin.dx.init(
+                  1,          // number of devices can be connected
+                  -127.0,     // proximity power level (disabled)
+                  10.0,       // active scan timeout
+                  false,      // auto connect (must be false)
+                  true,       // enable command channel
+                  false,      // enable scrambler
+                  true,       // enable TX backpressure
+                  [
+                        // Insert your BLE Service UUID String
+                  ],
+                  useSpp,
+                  ...
+```
+
 ## Build And Run The Apps
 ### iOS
 Configure Xcode command line tool and install ios-deploy package, if not already done so. 
