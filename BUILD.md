@@ -44,6 +44,8 @@ git clone https://github.com/GT-tronics/cordova-plugin-dataexchanger.git
 cd ~/projects/ionic/v4/qccdemo
 ionic cordova plugin add ../../../cordova/plugins/cordova-plugin-dataexchanger
 ```
+If you receive a zip folder of cordova-plugin-dataexchanger, you can unzip the folder to ~/projects/cordova/plugins/ instead of git clone in the above instruction.
+ 
 ## Build And Run The Apps
 ### iOS
 Configure Xcode command line tool and install ios-deploy package, if not already done so. 

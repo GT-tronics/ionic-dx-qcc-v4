@@ -1,4 +1,4 @@
-import { Component, NgZone } from '@angular/core';
+import { Component, NgZone, OnInit, OnDestroy  } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Platform, Events, NavController, AlertController } from '@ionic/angular';
 import { AtCmdDispatcherService, BtDeviceInfo } from '../../providers/atcmd-dispatcher/atcmd-dispatcher.service';
@@ -11,13 +11,16 @@ import { PageParamsPassingService } from 'src/app/providers/page-params-passing/
 })
 export class DiscoverPage
 {
-  unlinkDevInfos : BtDeviceInfo[];
-  linkedDevInfos : BtDeviceInfo[];
-  connectingDevInfos : { uuid : string, BtDeviceInfo };
-  connectedPageRoutes : { uuid : string, string };
-  pullToScanMsg : string = "Pull down to discover";
+  protected unlinkDevInfos : BtDeviceInfo[];
+  protected linkedDevInfos : BtDeviceInfo[];
+  protected connectingDevInfos : { uuid : string, BtDeviceInfo };
+  protected connectedPageRoutes : { uuid : string, string };
+  protected pullToScanMsg : string = "Pull down to discover";
+  protected isAppForeground : boolean = false;
+  protected isViewEntered : boolean = false;
   
-  connectingPrompt : any = null;
+  private connectingPrompt : any = null;
+  private bindedFunctions : {};
 
   constructor(
     public platform: Platform, 
@@ -30,11 +33,6 @@ export class DiscoverPage
     private ppp : PageParamsPassingService,
   ) 
   {
-    this.connectingDevInfos = <{ uuid : string, BtDeviceInfo }>{};
-    this.connectedPageRoutes = <{ uuid : string, string }>{};
-
-    events.subscribe('BT_DEV_CHANGED', this.handleBleDevChanged.bind(this));
-
     this.dispatcher.init( sysEvtObj => {
       console.log("[DISCOVER] SysEvt: " + JSON.stringify(sysEvtObj));  
       
@@ -46,8 +44,92 @@ export class DiscoverPage
       console.log("[DISCOVER] DX init failed " + JSON.stringify(failureObj));
     });
 
+    this.connectingDevInfos = <{ uuid : string, BtDeviceInfo }>{};
+    this.connectedPageRoutes = <{ uuid : string, string }>{};
+
+    // Subscribe to app background event
+    platform.pause.subscribe( () => {
+      console.log("[HOME] enter background");
+      this.isAppForeground = false;
+      if( this.isViewEntered )
+      {
+        this.dispatcher.stopScan();
+        for( var devInfo of this.unlinkDevInfos )
+        {
+          if( !devInfo.isIdle() )
+          {
+            this.dispatcher.disconnect(devInfo.uuid);
+          }
+        }
+        for( var devInfo of this.linkedDevInfos )
+        {
+          if( !devInfo.isIdle() )
+          {
+            this.dispatcher.disconnect(devInfo.uuid);
+          }
+        }
+      }
+    });
+
+    // Subscribe to app foreground event
+    platform.resume.subscribe( () => {
+      console.log("[HOME] enter foreground");
+      this.isAppForeground = true;
+    });
+  }
+
+  ngOnInit()
+  {
+    console.log('[HOME] ngOnInit');
+  }
+
+  ngOnDestroy()
+  {
+    console.log('[HOME] ngOnDestroy');
+  }
+
+  ionViewWillEnter()
+  {
+    console.log('[HOME] view entering');
+
+    var fn : any;
+
+    this.bindedFunctions = {};
+
+    fn = this.handleBleDevChanged.bind(this);
+    this.events.subscribe('BT_DEV_CHANGED', fn);
+    this.bindedFunctions['BT_DEV_CHANGED'] = fn;
+
     this.unlinkDevInfos = [];
     this.linkedDevInfos = this.dispatcher.getLinkedDevices();
+  }
+
+  ionViewDidEnter()
+  {
+    console.log('[HOME] did enter');
+
+    this.isViewEntered = true;
+
+  }
+
+  ionViewWillLeave()
+  {
+    console.log('[HOME] view leaving');
+  }
+
+  ionViewDidLeave()
+  {
+    console.log('[HOME] view left');
+
+    this.isViewEntered = false;
+
+    for( var key in this.bindedFunctions )
+    {
+      var fn = this.bindedFunctions[key];
+      this.events.unsubscribe(key, fn);
+    }
+
+    this.bindedFunctions = null;
   }
 
   trackByUUID(index, item)

@@ -1,5 +1,9 @@
 # HomeSpot App Release Notes
 
+## R 0.8.4
+* upgraded providers to V4 R5
+* required cordova-plugin-dataexchanger/android_spp R2
+
 ## R 0.8.3a
 * updated BUILD.md
 
