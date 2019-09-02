@@ -1,7 +1,8 @@
 import { Component, NgZone, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Platform, Events, NavController, AlertController, ToastController } from '@ionic/angular';
-import { AtCmdDispatcherService, BtDeviceInfo } from '../../providers/atcmd-dispatcher/atcmd-dispatcher.service';
+import { AtCmdDispatcherService } from '../../providers/atcmd-dispatcher/atcmd-dispatcher.service';
+import { BtDeviceInfo } from '../../providers/bt-device-info'
 import { ATCMDHDLQCCSNK } from '../../providers/atcmd-dispatcher/atcmd-handler-qcc-sink';
 import { PageParamsPassingService } from 'src/app/providers/page-params-passing/page-params-passing.service';
 
@@ -683,6 +684,14 @@ export class DeviceSnkPage implements OnInit, OnDestroy
     this.ppp.addOrReplace('/settings-snk', {'devInfo' : this.devInfo, 'atCmdHandler' : this.atCmdHandler, 'lastPageRoute' : '/device-snk'});
     this.zone.run(() => {
       this.navCtrl.navigateForward('/settings-snk');
+    });    
+  }
+
+  navToOverTheAirDownloadPage()
+  {
+    this.ppp.addOrReplace('/otad', {'devInfo' : this.devInfo, 'atCmdHandler' : this.atCmdHandler, 'lastPageRoute' : '/device-snk'});
+    this.zone.run(() => {
+      this.navCtrl.navigateForward('/otad');
     });    
   }
 

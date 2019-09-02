@@ -5,6 +5,9 @@
         </ion-buttons>
         <ion-title class="center">{{devInfo.btClassicName}}</ion-title>
         <ion-buttons slot="end">
+            <ion-button style="padding-right:10px" (click)="navToOverTheAirDownloadPage()">
+                <ion-icon slot="icon-only" name="code-download"></ion-icon>
+            </ion-button>
             <ion-button style="padding-right:10px" (click)="navToSettingsPage()">
                 <ion-icon slot="icon-only" name="settings"></ion-icon>
             </ion-button>

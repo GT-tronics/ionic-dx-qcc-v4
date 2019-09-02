@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text=""></ion-back-button>
+  </ion-buttons>
+  <ion-title class="center">Firmware Upgrade</ion-title>
+</ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+<div>
+  <p>{{status}}</p>
+</div>
+<div>
+  <ion-progress-bar color="primary" value="progress"></ion-progress-bar>
+</div>
+<div>
+  <ion-button size="large" color="warning" (click)="upgrade()">Upgrade</ion-button>
+  <ion-button size="large" color="warning" (click)="abort()">Abort</ion-button>
+</div>
+</ion-content>

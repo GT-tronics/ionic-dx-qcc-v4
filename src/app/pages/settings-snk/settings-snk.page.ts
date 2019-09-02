@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Platform, Events, NavController, AlertController } from '@ionic/angular';
 import { ATCMDHDLQCCSNK } from 'src/app/providers/atcmd-dispatcher/atcmd-handler-qcc-sink';
 import { PageParamsPassingService } from 'src/app/providers/page-params-passing/page-params-passing.service';
-import { BtDeviceInfo } from 'src/app/providers/atcmd-dispatcher/atcmd-dispatcher.service';
+import { BtDeviceInfo } from '../../providers/bt-device-info'
 
 /**
  * Generated class for the SettingsPage page.

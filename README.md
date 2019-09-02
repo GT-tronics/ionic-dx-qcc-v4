@@ -1,5 +1,9 @@
 # HomeSpot App Release Notes
 
+## R 0.8.6
+* upgraded provider to V4 R7
+* added OTAD page
+
 ## R 0.8.5
 * upgraded providers to V4 R6
 

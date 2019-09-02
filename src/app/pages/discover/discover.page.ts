@@ -1,7 +1,8 @@
 import { Component, NgZone, OnInit, OnDestroy  } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Platform, Events, NavController, AlertController } from '@ionic/angular';
-import { AtCmdDispatcherService, BtDeviceInfo } from '../../providers/atcmd-dispatcher/atcmd-dispatcher.service';
+import { AtCmdDispatcherService } from '../../providers/atcmd-dispatcher/atcmd-dispatcher.service';
+import { BtDeviceInfo } from '../../providers/bt-device-info'
 import { PageParamsPassingService } from 'src/app/providers/page-params-passing/page-params-passing.service';
 
 @Component({
@@ -33,17 +34,6 @@ export class DiscoverPage
     private ppp : PageParamsPassingService,
   ) 
   {
-    this.dispatcher.init( sysEvtObj => {
-      console.log("[DISCOVER] SysEvt: " + JSON.stringify(sysEvtObj));  
-      
-      // Add code here to handle BLE on/off events
-      //
-    }).then( successObj => {
-      console.log("[DISCOVER] DX init OK " + JSON.stringify(successObj));
-    }).catch( failureObj => {
-      console.log("[DISCOVER] DX init failed " + JSON.stringify(failureObj));
-    });
-
     this.connectingDevInfos = <{ uuid : string, BtDeviceInfo }>{};
     this.connectedPageRoutes = <{ uuid : string, string }>{};
 
