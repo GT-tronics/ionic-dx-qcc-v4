@@ -31,8 +31,7 @@ export class AppComponent {
         uuids       :
         [
              // Insert your own BLE Service UUID
-             //"231fc15a-0d6f-4e66-94c7-eb0d30ace6b0",
-             "2285569f-6602-425a-9b33-306100a2050f",
+             "231fc15a-0d6f-4e66-94c7-eb0d30ace6b0",
         ],
       }
 
