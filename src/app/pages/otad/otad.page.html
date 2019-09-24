@@ -12,7 +12,7 @@
   <p>{{status}}</p>
 </div>
 <div>
-  <ion-progress-bar color="primary" value="progress"></ion-progress-bar>
+  <ion-progress-bar color="primary" [value]="progress"></ion-progress-bar>
 </div>
 <div>
   <ion-button size="large" color="warning" (click)="upgrade()">Upgrade</ion-button>

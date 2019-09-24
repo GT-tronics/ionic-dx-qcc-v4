@@ -142,7 +142,10 @@ export class OtadPage implements OnInit
         },
         (obj) => {
           // On progress
-          this.progress = obj.progress * 0.01;
+          this.zone.run(() => {
+            this.progress = obj.progress * 0.01;
+            //console.log("[OTAD] upgrading " + this.progress);
+          });
         },
       );
     });
