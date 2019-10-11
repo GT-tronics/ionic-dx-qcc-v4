@@ -1,5 +1,9 @@
 # HomeSpot App Release Notes
 
+## R 0.8.8
+* upgraded provider to V4 R9
+* added switch firmware function in OTAD page
+
 ## R 0.8.7
 * upgraded provider to V4 R8
 * fixed the inactivity of the progress bar in OTAD page

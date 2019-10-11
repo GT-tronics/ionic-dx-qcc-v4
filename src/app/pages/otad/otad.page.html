@@ -17,5 +17,6 @@
 <div>
   <ion-button size="large" color="warning" (click)="upgrade()">Upgrade</ion-button>
   <ion-button size="large" color="warning" (click)="abort()">Abort</ion-button>
+  <ion-button *ngIf="enableSwitchButton" size="large" color="danger" (click)="commit()">Switch</ion-button>
 </div>
 </ion-content>

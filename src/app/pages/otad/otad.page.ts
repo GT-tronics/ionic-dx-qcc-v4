@@ -30,6 +30,8 @@ export class OtadPage implements OnInit
   protected firmBin : Uint8Array; 
   protected firmName : string;
 
+  protected enableSwitchButton : boolean = false;
+
   constructor
   (
     public platform: Platform,
@@ -143,7 +145,11 @@ export class OtadPage implements OnInit
         (obj) => {
           // On progress
           this.zone.run(() => {
-            this.progress = obj.progress * 0.01;
+            this.progress = obj.progress;
+            if( obj.stage == 1 )
+            {
+              this.enableSwitchButton = true;
+            }
             //console.log("[OTAD] upgrading " + this.progress);
           });
         },
@@ -159,4 +165,14 @@ export class OtadPage implements OnInit
       console.log("[OTAD] abort failed");
     });
   }
+
+  commit()
+  {
+    this.dispatcher.switchFirmware(this.devInfo.uuid, "QCC", 0, false).then( ret => {
+      console.log("[OTAD] switch successful");
+    }).catch( ret => {
+      console.log("[OTAD] switch failed");
+    });
+  }
+
 }
