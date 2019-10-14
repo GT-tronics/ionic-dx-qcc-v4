@@ -1,5 +1,9 @@
 # HomeSpot App Release Notes
 
+## R 0.8.9
+* upgrade provider to V4 R10
+* enabled download progress log
+
 ## R 0.8.8
 * upgraded provider to V4 R9
 * added switch firmware function in OTAD page

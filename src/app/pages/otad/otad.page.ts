@@ -150,7 +150,7 @@ export class OtadPage implements OnInit
             {
               this.enableSwitchButton = true;
             }
-            //console.log("[OTAD] upgrading " + this.progress);
+            console.log("[OTAD] upgrading @stage" + obj.stage + " " + (obj.progress * 100) + "%");
           });
         },
       );
