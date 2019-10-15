@@ -41,6 +41,7 @@ dependencies {
 ```
 cd ~/projects/cordova/plugins/
 git clone https://github.com/GT-tronics/cordova-plugin-dataexchanger.git
+git checkout android_spp
 cd ~/projects/ionic/v4/qccdemo
 ionic cordova plugin add ../../../cordova/plugins/cordova-plugin-dataexchanger
 ```
@@ -84,7 +85,7 @@ ionic cordova run android
 ```
 ## Ionic Info
 ```
-onic:
+Ionic:
 
    ionic (Ionic CLI)             : 4.12.0 (/Users/ming/.nvm/versions/node/v11.10.0/lib/node_modules/ionic)
    Ionic Framework               : @ionic/angular 4.3.1
@@ -96,8 +97,8 @@ onic:
 Cordova:
 
    cordova (Cordova CLI) : 8.1.2 (cordova-lib@8.1.1)
-   Cordova Platforms     : none
-   Cordova Plugins       : no whitelisted plugins (1 plugins total)
+   Cordova Platforms     : android 7.1.4, ios 4.5.5
+   Cordova Plugins       : cordova-plugin-ionic-keyboard 2.1.3, cordova-plugin-ionic-webview 4.0.1, (and 6 other plugins)
 
 System:
 
@@ -106,8 +107,8 @@ System:
    ios-sim           : 5.0.8
    NodeJS            : v11.10.0 (/Users/ming/.nvm/versions/node/v11.10.0/bin/node)
    npm               : 6.7.0
-   OS                : macOS High Sierra
-   Xcode             : Xcode 10.1 Build version 10B61
+   OS                : macOS Mojave
+   Xcode             : Xcode 11.0 Build version 11A420a
 
 ```
 
