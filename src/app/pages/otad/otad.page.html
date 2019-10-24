@@ -15,7 +15,8 @@
   <ion-progress-bar color="primary" [value]="progress"></ion-progress-bar>
 </div>
 <div>
-  <ion-button size="large" color="warning" (click)="upgrade()">Upgrade</ion-button>
+  <ion-button size="large" color="warning" (click)="downloadBinaryA()">Download A</ion-button>
+  <ion-button size="large" color="warning" (click)="downloadBinaryB()">Download B</ion-button>
   <ion-button size="large" color="warning" (click)="abort()">Abort</ion-button>
   <ion-button *ngIf="enableSwitchButton" size="large" color="danger" (click)="commit()">Switch</ion-button>
 </div>

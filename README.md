@@ -1,5 +1,8 @@
 # HomeSpot App Release Notes
 
+## R 0.8.10
+* added support of two binary OTAD
+
 ## R 0.8.9
 * upgrade provider to V4 R10
 * enabled download progress log

@@ -117,11 +117,21 @@ export class OtadPage implements OnInit
     }
   }
 
-  upgrade()
+  downloadBinaryA()
+  {
+    this.downloadBinary("assets/sink_image_upgrade_a.bin")
+  }
+
+  downloadBinaryB()
+  {
+    this.downloadBinary("assets/sink_image_upgrade_b.bin")
+  }
+
+  downloadBinary(binName : string)
   {
     this.upgradeInProgress = true;
 
-    this.http.get("assets/sink_image_upgrade.bin", {responseType: 'blob'}).subscribe(async blob => {
+    this.http.get(binName, {responseType: 'blob'}).subscribe(async blob => {
       var arrayBuf = await new Response(blob).arrayBuffer();
       
       var md5 = new Md5();
