@@ -41,6 +41,7 @@ dependencies {
 ```
 cd ~/projects/cordova/plugins/
 git clone https://github.com/GT-tronics/cordova-plugin-dataexchanger.git
+cd cordova-plugin-dataexchanger
 git checkout android_spp
 cd ~/projects/ionic/v4/qccdemo
 ionic cordova plugin add ../../../cordova/plugins/cordova-plugin-dataexchanger
